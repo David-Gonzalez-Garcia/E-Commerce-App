@@ -1,23 +1,11 @@
 import express from "express";
-import { check } from "express-validator";
-import { createUser } from "../controllers/usersController";
+import usersController from "../controllers/usersController.js";
+import userValidator from "../validators/userValidator.js";
 
-const router = express.Router();
+const userRouter = express.Router();
 
-// @route   POST /users
-// @desc    Create a new user account
-// @access  Public
-router.post(
-  "/",
-  [
-    check("email", "Please include a valid email").isEmail(),
-    check("username", "Please include a valid username").notEmpty(),
-    check(
-      "password",
-      "Please enter a password with 6 or more characters"
-    ).isLength({ min: 6 }),
-  ],
-  createUser
-);
+userRouter.post("/", userValidator.validateUser, usersController.createUser);
+userRouter.post("/login", usersController.loginUser);
+userRouter.post("/logout", usersController.logoutUser);
 
-export { router as userRouter };
+export { userRouter };
