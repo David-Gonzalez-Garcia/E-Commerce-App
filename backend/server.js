@@ -6,28 +6,27 @@ import productRoutes from "./routes/productRoutes.js";
 import usersRoutes from "./routes/usersRoutes.js";
 import cartRoutes from "./routes/cartRoutes.js";
 
-const app = express();
+const server = express();
 
 // Middleware
-app.use(bodyParser.json());
-app.use(cors());
+server.use(bodyParser.json());
+server.use(cors());
 
 // Routes
-app.use("/api/products", productRoutes);
-app.use("/api/users", usersRoutes);
-app.use("/api/cart", cartRoutes);
+server.use("/api/products", productRoutes);
+server.use("/api/users", usersRoutes);
+server.use("/api/cart", cartRoutes);
 
-// Database connection
+// Connect to MongoDB database
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost/ecommerce", {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
   })
-  .then(() => console.log("Connected to MongoDB"))
+  .then(() => console.log("Connected to MongoDB database"))
   .catch((err) => console.log(err));
 
 // Start server
-app.listen(process.env.PORT || 3000, () => {
+server.listen(process.env.PORT || 3000, () => {
   console.log(`Server started on port ${process.env.PORT || 3000}`);
 });
