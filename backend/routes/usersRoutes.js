@@ -1,6 +1,5 @@
 import express from "express";
 import { check } from "express-validator";
-import authMiddleware from "../middleware/authMiddleware";
 import { createUser } from "../controllers/usersController";
 
 const router = express.Router();
@@ -21,4 +20,4 @@ router.post(
   createUser
 );
 
-export default router;
+export { router as userRouter };

@@ -54,4 +54,4 @@ router.put(
 // @access  Private
 router.delete("/:id", authMiddleware, deleteProduct);
 
-export default router;
+export { router as productRouter };
