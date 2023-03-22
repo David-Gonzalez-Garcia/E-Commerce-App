@@ -14,8 +14,8 @@ POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-"email":"Anna@abc.com",
-"username":"Anna",
+"email":"luis@luis.com",
+"username":"Luis",
 "password":"123456789"
 }
 
@@ -26,8 +26,8 @@ Content-Type: application/json
 
 
 {
-"email":"Anna@abc.com",
-"username":"Anna",
+"email":"luis@luis.com",
+"username":"Luis",
 "password":"123456789"
 }
 
@@ -44,8 +44,8 @@ Content-Type: application/json
 
 {
 
-  "name":"some Bag",
-  "description":"Brown color",
+  "name":"a car",
+  "description":"blue color",
   "price":60,
   "quantity":1
 }
@@ -64,7 +64,7 @@ Content-Type: application/json
 
 {
 
-"description":"White Bag"
+"description":"White car"
 }
 
 ###
@@ -114,9 +114,3 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWFmYTQyZ
 
 
 
-
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
