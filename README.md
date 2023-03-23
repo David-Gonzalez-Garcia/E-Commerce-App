@@ -1,87 +1,18 @@
 # BackEnd-final-project-E05-B
 
-# Project 1: Blog Application
+# Project 3: E-commerce Platform
 ## Description
-- A blog application that allows users to create, read, update, and delete blog posts.
+-A back-end e-commerce app featuring shopping cart, payment processing, and product management.
 
 ### Technologies
 - Node.js
 - Express.js
 - MongoDB
 - Express Validator
-- bvrypt.js
-## Models
-### User
-- username (string)
-- password (string)
-- email (string)
-### Post
-- title (string)
-- content (string)
-- author (ObjectId)
-- createdAt (Date)
-- updatedAt (Date)
-## Database Relations
-- User has many posts
-- Post belongs to one user
-### Endpoints
-- POST /signup - create a new user account
-- POST /login - log in to an existing user account
-- POST /logout - log out of the current user account
-- GET /posts - get a list of all blog posts
-- GET /posts/:id - get a single blog post by ID
-- POST /posts - create a new blog post
-- PUT /posts/:id - update an existing blog post by ID
-- DELETE /posts/:id - delete a blog post by ID
-## Validation
-- POST /signup - validate username, password, and email
-- POST /login - validate username and password
-- POST /posts - validate title and content
-
-
-
- 
- # Project 2: Task Manager
- ## Description
-- A task manager application that allows users to create, read, update, and delete tasks.
-- 
- ## Technologies
-- Node.js
-- Express.js
-- MongoDB
-- Express Validator
 - bcrypt.js
-## Models
-### User
-- username (string)
-- password (string)
-- email (string)
-### Task
-- title (string)
-- description (string)
-- completed (boolean)
-- dueDate (Date)
-- createdAt (Date)
-- updatedAt (Date)
-## Database Relations
-- User has many tasks
-- Task belongs to one user
-## Endpoints
-- POST /signup - create a new user account
-- POST /login - log in to an existing user account
-- POST /logout - log out of the current user account
-- GET /tasks - get a list of all tasks
-- GET /tasks/:id - get a single task by ID
-- POST /tasks - create a new task
-- PUT /tasks/:id - update an existing task by ID
-- DELETE /tasks/:id - delete a task by ID
-## Validation
-- POST /signup - validate username, password, and email
-- POST /login - validate username and password
-- POST /tasks - validate title and description
 
 
-# Project 3: E-commerce Platform
+
 ## Endpoints:
 
 - GET /products: Get a list of all products
