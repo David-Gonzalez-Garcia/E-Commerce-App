@@ -1,22 +1,20 @@
 
+ 
+
+
 ###user
-
-
 # get all users
 GET http://localhost:5000/users
 
-
-
 # add user
 ###
-
 POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-"email":"luis@luis.com",
-"username":"Luis",
-"password":"123456789"
+"email":"Annabelle@cabc.com",
+"username":"Anna",
+"password":"j!8@oZmg"
 }
 
 # login
@@ -26,9 +24,9 @@ Content-Type: application/json
 
 
 {
-"email":"luis@luis.com",
-"username":"Luis",
-"password":"123456789"
+"email":"Annabelle@cabc.com",
+"username":"Anna",
+"password":"j!8@oZmg"
 }
 
 ###Products
@@ -43,49 +41,47 @@ Content-Type: application/json
 
 
 {
-
-  "name":"a car",
-  "description":"blue color",
-  "price":60,
+"name":"Prada Bag",
+  "description":"Glod color",
+  "price":1020,
   "quantity":1
 }
 
 
 ###
 # get product by id
-GET http://localhost:5000/products/641af9bbf537cf87dc42e3f1
+GET http://localhost:5000/products/641c6dec96322008b9d6be9c
 
 
 ###
 # update product by id
-PUT http://localhost:5000/products/641af9bbf537cf87dc42e3f1
+PUT http://localhost:5000/products/641c6dec96322008b9d6be9c
 Content-Type: application/json
 
 
 {
 
-"description":"White car"
+"price":1030
 }
 
 ###
 # delete product by id
-Delete http://localhost:5000/products/641af9bbf537cf87dc42e3f1
+Delete http://localhost:5000/products/641c6dec96322008b9d6be9c
 
 
 ###cart
-
 # get users cart
 
 GET http://localhost:5000/cart
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWFmYTQyZjUzN2NmODdkYzQyZTNmNCIsImlhdCI6MTY3OTUwMTUzMSwiZXhwIjoxNjc5NTg3OTMxfQ.ZcXg-WiGrpiZQchkDCykji3gwCCqSpHCvwEwNApe3cw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWM2ZDhkOTYzMjIwMDhiOWQ2YmU5NyIsImlhdCI6MTY3OTU4NDkyOCwiZXhwIjoxNjc5NjcxMzI4fQ.BeRegUpwID-JJZwbnsKti2dvdOgeS9FZhoTc0DkzF6o
 
 
 ###
 # add cart
 POST http://localhost:5000/cart
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWFmYTQyZjUzN2NmODdkYzQyZTNmNCIsImlhdCI6MTY3OTUwMTUzMSwiZXhwIjoxNjc5NTg3OTMxfQ.ZcXg-WiGrpiZQchkDCykji3gwCCqSpHCvwEwNApe3cw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWM2ZDhkOTYzMjIwMDhiOWQ2YmU5NyIsImlhdCI6MTY3OTU4NDkyOCwiZXhwIjoxNjc5NjcxMzI4fQ.BeRegUpwID-JJZwbnsKti2dvdOgeS9FZhoTc0DkzF6o
 
 
 
@@ -93,24 +89,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWFmYTQyZ
 "product":"641af2b0a5d141ff1b7c8ec2"
 }
 
-###
 
+###
 ##remove product from cart
 
-DELETE  http://localhost:5000/cart/641af8c47e50a0a2107cb815
+DELETE  http://localhost:5000/cart/641af2b0a5d141ff1b7c8ec2
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWFmYTQyZjUzN2NmODdkYzQyZTNmNCIsImlhdCI6MTY3OTUwMTUzMSwiZXhwIjoxNjc5NTg3OTMxfQ.ZcXg-WiGrpiZQchkDCykji3gwCCqSpHCvwEwNApe3cw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWM2ZDhkOTYzMjIwMDhiOWQ2YmU5NyIsImlhdCI6MTY3OTU4NDkyOCwiZXhwIjoxNjc5NjcxMzI4fQ.BeRegUpwID-JJZwbnsKti2dvdOgeS9FZhoTc0DkzF6o
 
 
 ###
-
-
 ###checkout
 POST http://localhost:5000/checkout
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWFmYTQyZjUzN2NmODdkYzQyZTNmNCIsImlhdCI6MTY3OTUwMTUzMSwiZXhwIjoxNjc5NTg3OTMxfQ.ZcXg-WiGrpiZQchkDCykji3gwCCqSpHCvwEwNApe3cw
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWM2ZDhkOTYzMjIwMDhiOWQ2YmU5NyIsImlhdCI6MTY3OTU4NDkyOCwiZXhwIjoxNjc5NjcxMzI4fQ.BeRegUpwID-JJZwbnsKti2dvdOgeS9FZhoTc0DkzF6o
 
 
 
