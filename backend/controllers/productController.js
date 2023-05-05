@@ -1,98 +1,70 @@
-import { validationResult } from "express-validator";
-import { Product } from "../models/product";
+import ProductModel from "../models/ProductModel.js";
+import createError from "http-errors";
 
-export const getProducts = async (req, res) => {
-  const products = await Product.find();
-  res.json(products);
+export const getAllProducts = async (req, res, next) => {
+  try {
+    const allProducts = await ProductModel.find();
+    res.send(allProducts);
+  } catch (error) {
+    next(createError(404, error.message));
+  }
 };
 
-export const createProduct = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
-
-  const { name, description, price, quantity } = req.body;
-
+export const createNewProduct = async (req, res, next) => {
   try {
-    const product = new Product({
-      name,
-      description,
-      price,
-      quantity,
+    const newUser = await ProductModel.create(req.body);
+    res.send(newUser);
+  } catch (error) {
+    next(createError(404, error.message));
+  }
+};
+
+export const getAllProductById = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const getProductById = await ProductModel.findById(id);
+    res.send(getProductById);
+  } catch (error) {
+    next(createError(404, error.message));
+  }
+};
+
+export const updateById = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+
+    const findProductAndUpdate = await ProductModel.findByIdAndUpdate(
+      {
+        _id: id,
+      },
+      req.body,
+      {
+        new: true,
+      }
+    );
+    res.send(findProductAndUpdate);
+  } catch (error) {
+    next(createError(404, error.message));
+  }
+};
+
+export const deleteById = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const deleteSpecificProduct = await ProductModel.deleteOne({
+      _id: id,
     });
 
-    await product.save();
-
-    res.status(201).json(product);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Server Error");
-  }
-};
-
-export const getProductById = async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    const product = await Product.findById(id);
-
-    if (!product) {
-      return res.status(404).json({ msg: "Product not found" });
+    if (deleteSpecificProduct.deletedCount) {
+      res.status(200).send({
+        message: "one item is deleted",
+      });
+    } else {
+      res.status(418).send({
+        message: "nothing was deleted. The item does not exist !",
+      });
     }
-
-    res.json(product);
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Server Error");
-  }
-};
-
-export const updateProduct = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
-
-  const { id } = req.params;
-  const { name, description, price, quantity } = req.body;
-
-  try {
-    let product = await Product.findById(id);
-
-    if (!product) {
-      return res.status(404).json({ msg: "Product not found" });
-    }
-
-    product.name = name;
-    product.description = description;
-    product.price = price;
-    product.quantity = quantity;
-
-    await product.save();
-
-    res.json(product);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Server Error");
-  }
-};
-
-export const deleteProduct = async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    let product = await Product.findById(id);
-
-    if (!product) {
-      return res.status(404).json({ msg: "Product not found" });
-    }
-
-    await product.remove();
-
-    res.json({ msg: "Product removed" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Server Error");
+    next(createError(404, error.message));
   }
 };
